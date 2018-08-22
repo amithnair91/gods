@@ -1,0 +1,3 @@
+test:
+	@echo "Running Tests"
+	@go test ./...

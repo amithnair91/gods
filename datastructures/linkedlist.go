@@ -1,27 +1,23 @@
 package datastructures
 
 
-type LinkedList struct{
-	items *[]Item
-	currentItem *Item
-}
-
-type Item struct{
-	value struct{}
-	next Item
-}
-
-func (l *LinkedList)GetHead()(item Item){
-	return (*l.items)[0]
+type linkedList struct{
+	head interface{}
 }
 
 
-func (l *LinkedList)GetTail()(item Item){
-	lastIndex := len(*l.items)
-	return (*l.items)[lastIndex]
+func NewLinkedList()(linkedList){
+
+	return linkedList{}
 }
 
+func (l *linkedList)Add(item interface{})(bool){
+	if l.head == nil{
+		l.head = item
+	}
+	return true
+}
 
-func (l *LinkedList)Next()(item Item){
-	return l.currentItem.next
+func (l *linkedList)GetHead()(interface{}){
+	return l.head
 }
