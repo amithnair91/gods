@@ -1,21 +1,21 @@
 package datastructures_test
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
 	"gitlab.com/amithnair/gods/datastructures"
 	"reflect"
+	"testing"
 )
 
 func TestShouldBeAbleToAddItem(t *testing.T) {
-	linkedList := datastructures.NewLinkedList()
+	linkedList := datastructures.NewSinglyLinkedList()
 	added := linkedList.Add(1)
 
 	assert.True(t, added)
 }
 
 func TestShouldAssignHeadElementOnFirstAdd(t *testing.T) {
-	linkedList := datastructures.NewLinkedList()
+	linkedList := datastructures.NewSinglyLinkedList()
 	expectedHead := 1
 	linkedList.Add(expectedHead)
 	head := linkedList.Head()
@@ -26,7 +26,7 @@ func TestShouldReturnFirstAddedItemAsHead(t *testing.T) {
 
 	inputItems := []string{"mamooty", "mohanlal"}
 
-	linkedList := datastructures.NewLinkedList()
+	linkedList := datastructures.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 
@@ -37,7 +37,7 @@ func TestShouldReturnFirstAddedItemAsHead(t *testing.T) {
 
 func TestShouldBeAbleToReturnNextItem(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal"}
-	linkedList := datastructures.NewLinkedList()
+	linkedList := datastructures.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 
@@ -49,10 +49,9 @@ func TestShouldBeAbleToReturnNextItem(t *testing.T) {
 
 func TestShouldReturnTailAsEmptyOnAddingSingleElement(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal"}
-	linkedList := datastructures.NewLinkedList()
+	linkedList := datastructures.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	tail := linkedList.Tail()
 	expectedResult := datastructures.Element{}
 	assert.True(t, reflect.DeepEqual(expectedResult, tail))
 }
-

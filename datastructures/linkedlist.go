@@ -1,6 +1,6 @@
 package datastructures
 
-type linkedList struct {
+type singlyLinkedList struct {
 	head Element
 	tail Element
 }
@@ -10,11 +10,11 @@ type Element struct {
 	next  *Element
 }
 
-func NewLinkedList() (linkedList) {
-	return linkedList{}
+func NewSinglyLinkedList() singlyLinkedList {
+	return singlyLinkedList{}
 }
 
-func (l *linkedList) Add(item interface{}) (bool) {
+func (l *singlyLinkedList) Add(item interface{}) bool {
 	if l.head.value == nil {
 		l.head.value = item
 		l.head.next = nil
@@ -23,24 +23,24 @@ func (l *linkedList) Add(item interface{}) (bool) {
 		l.tail = nextElement
 		l.head.next = &nextElement
 	} else {
-		nextElement := Element{item, nil,}
+		nextElement := Element{item, nil}
 		l.tail.next = &nextElement
 	}
 	return true
 }
 
-func (l *linkedList) Head() (Element) {
+func (l *singlyLinkedList) Head() Element {
 	return l.head
 }
 
-func (l *linkedList) Tail() (Element) {
+func (l *singlyLinkedList) Tail() Element {
 	return l.tail
 }
 
-func (e *Element) Next() (*Element) {
+func (e *Element) Next() *Element {
 	return e.next
 }
 
-func (e *Element) Value() (interface{}) {
+func (e *Element) Value() interface{} {
 	return e.value
 }
