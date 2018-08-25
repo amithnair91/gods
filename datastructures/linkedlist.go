@@ -56,6 +56,13 @@ func (l *singlyLinkedList) Head() Element {
 
 func (l *singlyLinkedList) Tail() Element {
 	return l.tail
+
+func (l *singlyLinkedList) String() []string {
+
+	items := []string{}
+	toStringArray(l.head, &items)
+
+	return items
 }
 
 func (e *Element) Next() *Element {
@@ -64,4 +71,17 @@ func (e *Element) Next() *Element {
 
 func (e *Element) Value() interface{} {
 	return e.value
+}
+
+func toStringArray(elem *Element, items *[]string) *[]string {
+
+	if elem.value != nil {
+		*items = append(*items, elem.value.(string))
+	}
+
+	if elem.next != nil {
+		return toStringArray(elem.next, items)
+	}
+
+	return items
 }

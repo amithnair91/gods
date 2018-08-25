@@ -1,6 +1,7 @@
 package datastructures_test
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"gitlab.com/amithnair/gods/datastructures"
 	"reflect"
@@ -78,4 +79,62 @@ func TestShouldReturnTrueIfElementExists(t *testing.T) {
 	removed := linkedList.Remove(inputItems[1])
 
 	assert.True(t, removed)
+}
+
+func TestShouldBeAbleToAddMultipleItems(t *testing.T) {
+	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
+	linkedList := datastructures.NewSinglyLinkedList()
+	linkedList.Add(inputItems[0])
+	linkedList.Add(inputItems[1])
+	linkedList.Add(inputItems[2])
+	linkedList.Add(inputItems[3])
+
+	mamooty := linkedList.Head()
+	mohanlal := mamooty.Next()
+	srinivasan := mohanlal.Next()
+	nivin := srinivasan.Next()
+
+	assert.Equal(t, inputItems[0], mamooty.Value())
+	assert.Equal(t, inputItems[1], mohanlal.Value())
+	assert.Equal(t, inputItems[2], srinivasan.Value())
+	assert.Equal(t, inputItems[3], nivin.Value())
+
+}
+
+func TestShouldBeAbleToListItems(t *testing.T) {
+	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
+	linkedList := datastructures.NewSinglyLinkedList()
+	linkedList.Add(inputItems[0])
+	linkedList.Add(inputItems[1])
+	linkedList.Add(inputItems[2])
+	linkedList.Add(inputItems[3])
+
+	items := linkedList.String()
+
+	println(fmt.Sprintf("%#v", items))
+
+	assert.Equal(t, inputItems[0], items[0])
+	assert.Equal(t, inputItems[1], items[1])
+	assert.Equal(t, inputItems[2], items[2])
+	assert.Equal(t, inputItems[3], items[3])
+}
+
+func TestShouldBeAbleToMaintainInsertionOrderOnRemoval(t *testing.T) {
+	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
+	linkedList := datastructures.NewSinglyLinkedList()
+	linkedList.Add(inputItems[0])
+	linkedList.Add(inputItems[1])
+	linkedList.Add(inputItems[2])
+	linkedList.Add(inputItems[3])
+
+	linkedList.Remove(inputItems[1])
+
+	mamooty := linkedList.Head()
+	srinivasan := mamooty.Next()
+	nivin := srinivasan.Next()
+
+	assert.Equal(t, inputItems[0], mamooty.Value())
+	assert.Equal(t, inputItems[2], srinivasan.Value())
+	assert.Equal(t, inputItems[3], nivin.Value())
+
 }
