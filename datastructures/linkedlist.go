@@ -29,6 +29,27 @@ func (l *singlyLinkedList) Add(item interface{}) bool {
 	return true
 }
 
+func (l *singlyLinkedList) Remove(value interface{}) bool {
+
+	_, exist := findElement(&l.head, value)
+	if exist {
+		return true
+	}
+
+	return false
+}
+
+//recursion
+func findElement(elem *Element, value interface{}) (Element, bool) {
+	if elem.value.(string) == value.(string) {
+		return *elem, true
+	} else if elem.next != nil {
+		return findElement(elem.next, value)
+	}
+
+	return Element{}, false
+}
+
 func (l *singlyLinkedList) Head() Element {
 	return l.head
 }

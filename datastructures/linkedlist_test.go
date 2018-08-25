@@ -55,3 +55,27 @@ func TestShouldReturnTailAsEmptyOnAddingSingleElement(t *testing.T) {
 	expectedResult := datastructures.Element{}
 	assert.True(t, reflect.DeepEqual(expectedResult, tail))
 }
+
+func TestShouldReturnFalseOnRemoveElementIfItemDoesNotExist(t *testing.T) {
+	inputItems := []string{"mamooty", "mohanlal", "srinivasan"}
+	linkedList := datastructures.NewSinglyLinkedList()
+	linkedList.Add(inputItems[0])
+	linkedList.Add(inputItems[1])
+	linkedList.Add(inputItems[2])
+
+	removed := linkedList.Remove("prithviraj")
+
+	assert.False(t, removed)
+}
+
+func TestShouldReturnTrueIfElementExists(t *testing.T) {
+	inputItems := []string{"mamooty", "mohanlal", "srinivasan"}
+	linkedList := datastructures.NewSinglyLinkedList()
+	linkedList.Add(inputItems[0])
+	linkedList.Add(inputItems[1])
+	linkedList.Add(inputItems[2])
+
+	removed := linkedList.Remove(inputItems[1])
+
+	assert.True(t, removed)
+}
