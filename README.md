@@ -6,3 +6,7 @@
 **Data structure reference**
 https://www.geeksforgeeks.org/data-structures/
 
+**List of implemented Data Structures**
+
+1. LinkedList
+
