@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"gitlab.com/amithnair/gods/datastructures"
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestShouldBeAbleToAddItem(t *testing.T) {
