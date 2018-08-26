@@ -44,7 +44,7 @@ func (l *singlyLinkedList) Remove(value interface{}) bool {
 //O(n) time complexity
 func findAndRemoveElement(previousElement, elem *Element, value interface{}) bool {
 
-	if elem.value.(string) == value.(string) {
+	if elem.value == value {
 		nextElement := elem.next
 		previousElement.next = nextElement
 		return true
@@ -66,10 +66,10 @@ func (l *singlyLinkedList) Tail() Element {
 	return *l.tail
 }
 
-func (l *singlyLinkedList) String() []string {
+func (l *singlyLinkedList) Array() []interface{} {
 
-	var items []string
-	toStringArray(l.head, &items)
+	var items []interface{}
+	toArray(l.head, &items)
 
 	return items
 }
@@ -82,14 +82,14 @@ func (e *Element) Value() interface{} {
 	return e.value
 }
 
-func toStringArray(elem *Element, items *[]string) *[]string {
+func toArray(elem *Element, items *[]interface{}) *[]interface{} {
 
 	if elem.value != nil {
-		*items = append(*items, elem.value.(string))
+		*items = append(*items, elem.value)
 	}
 
 	if elem.next != nil {
-		return toStringArray(elem.next, items)
+		return toArray(elem.next, items)
 	}
 
 	return items
