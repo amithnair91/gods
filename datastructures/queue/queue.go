@@ -1,6 +1,8 @@
 package queue
 
-import "errors"
+import (
+	"errors"
+)
 
 type Queue struct {
 	items []interface{}
@@ -10,8 +12,8 @@ func NewQueue() Queue {
 	return Queue{}
 }
 
-func (Queue) Size() int {
-	return 0
+func (q *Queue) Size() int {
+	return len(q.items)
 }
 
 func (q *Queue) Front() (interface{}, error) {
@@ -20,7 +22,7 @@ func (q *Queue) Front() (interface{}, error) {
 		return nil, errors.New("queue is empty")
 	}
 
-	return nil, nil
+	return q.items[0], nil
 }
 
 func (q *Queue) Rear() (interface{}, error) {
@@ -29,11 +31,11 @@ func (q *Queue) Rear() (interface{}, error) {
 		return nil, errors.New("queue is empty")
 	}
 
-	return nil, nil
+	return q.items[len(q.items)-1], nil
 }
 
-func (q *Queue) Enqueue() {
-
+func (q *Queue) Enqueue(item interface{}) {
+	q.items = append(q.items, item)
 }
 
 func (q *Queue) Dequeue() (interface{}, error) {
@@ -42,5 +44,8 @@ func (q *Queue) Dequeue() (interface{}, error) {
 		return nil, errors.New("queue is empty")
 	}
 
-	return nil, nil
+	itemToRemove := q.items[0]
+	q.items = q.items[1:]
+
+	return itemToRemove, nil
 }
