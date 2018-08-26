@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"gitlab.com/amithnair/gods/datastructures"
+	"github.com/amithnair91/gods/datastructures"
 
 	"github.com/stretchr/testify/assert"
 )
