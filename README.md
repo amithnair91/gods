@@ -10,15 +10,15 @@ https://www.geeksforgeeks.org/data-structures/
 
 1. LinkedList
 2. Stack
+3. Queue
 
 
 **TODO**
 
-1. Queue
-2. Binary Tree
-3. Binary Search Tree
-4. Heap
-5. Graph
-6. Set
-7. HashSet
-8. Trie
+1. Binary Tree
+2. Binary Search Tree
+3. Heap
+4. Graph
+5. Set
+6. HashSet
+7. Trie
