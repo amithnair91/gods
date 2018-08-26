@@ -79,3 +79,36 @@ func TestShouldReduceSizeOnRemovalOfItem(t *testing.T) {
 	set.Remove("firstItem")
 	assert.Equal(t, 0, set.Size())
 }
+
+func TestContainsReturnsFalseIfItemDoesNotExist(t *testing.T) {
+	set := s.NewSet()
+
+	contains := set.Contains("firstItem")
+
+	assert.False(t, contains)
+}
+
+func TestContainsReturnsTrueIfSetContainsItem(t *testing.T) {
+	set := s.NewSet()
+
+	set.Add("firstItem")
+	set.Add("secondItem")
+
+	contains := set.Contains("firstItem")
+
+	assert.True(t, contains)
+}
+
+func TestRemoveDeletesItemFromSet(t *testing.T) {
+	removedItem := "secondItem"
+	set := s.NewSet()
+
+	set.Add("firstItem")
+	set.Add(removedItem)
+
+	assert.True(t, set.Contains(removedItem))
+
+	set.Remove(removedItem)
+
+	assert.False(t, set.Contains(removedItem))
+}

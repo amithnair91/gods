@@ -16,6 +16,7 @@ func (s *Set) Size() int {
 	return len(s.items)
 }
 
+//time complexity O(n) worst case
 func (s *Set) Remove(item interface{}) bool {
 
 	if index, exists := s.contains(item); exists {
@@ -41,6 +42,7 @@ func (s *Set) Remove(item interface{}) bool {
 	return false
 }
 
+//time complexity O(n) worst case
 func (s *Set) Add(item interface{}) error {
 
 	if _, exists := s.contains(item); exists {
@@ -58,4 +60,13 @@ func (s *Set) contains(item interface{}) (int, bool) {
 		}
 	}
 	return 0, false
+}
+
+func (s *Set) Contains(item interface{}) bool {
+
+	if _, exists := s.contains(item); exists {
+		return true
+	}
+
+	return false
 }
