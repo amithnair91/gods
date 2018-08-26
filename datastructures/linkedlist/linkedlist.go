@@ -1,4 +1,4 @@
-package datastructures
+package linkedlist
 
 type singlyLinkedList struct {
 	head *Element
