@@ -1,6 +1,8 @@
 package set
 
-import "errors"
+import (
+	"errors"
+)
 
 type Set struct {
 	items []interface{}
@@ -14,9 +16,34 @@ func (s *Set) Size() int {
 	return len(s.items)
 }
 
+func (s *Set) Remove(item interface{}) bool {
+
+	if index, exists := s.contains(item); exists {
+		var firstSlice []interface{}
+		var secondSlice []interface{}
+
+		if index == 0 {
+			firstSlice = s.items[1:]
+		} else {
+			firstSlice = s.items[0:index]
+		}
+
+		if index >= s.Size() {
+			secondSlice = s.items[:s.Size()-1]
+		} else {
+			secondSlice = s.items[index+1 : s.Size()]
+		}
+
+		s.items = append(firstSlice, secondSlice...)
+		return true
+	}
+
+	return false
+}
+
 func (s *Set) Add(item interface{}) error {
 
-	if s.contains(item) {
+	if _, exists := s.contains(item); exists {
 		return errors.New("cannot add item that already exists in the set")
 	}
 
@@ -24,11 +51,11 @@ func (s *Set) Add(item interface{}) error {
 	return nil
 }
 
-func (s *Set) contains(item interface{}) bool {
-	for _, val := range s.items {
+func (s *Set) contains(item interface{}) (int, bool) {
+	for index, val := range s.items {
 		if val == item {
-			return true
+			return index, true
 		}
 	}
-	return false
+	return 0, false
 }

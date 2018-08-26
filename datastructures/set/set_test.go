@@ -23,13 +23,13 @@ func TestSizeReturnsZeroWhenSetIsEmpty(t *testing.T) {
 func TestAddShouldNotPanic(t *testing.T) {
 	set := s.NewSet()
 
-	assert.NotPanics(t, func() { set.Add("someData") })
+	assert.NotPanics(t, func() { set.Add("someItem") })
 }
 
 func TestSizeReturnsSizeOfSet(t *testing.T) {
 	set := s.NewSet()
 
-	set.Add("someData")
+	set.Add("someItem")
 
 	assert.Equal(t, 1, set.Size())
 }
@@ -37,9 +37,45 @@ func TestSizeReturnsSizeOfSet(t *testing.T) {
 func TestShouldReturnFalseWhenItemAlreadyExists(t *testing.T) {
 	set := s.NewSet()
 
-	set.Add("someData")
-	err := set.Add("someData")
+	set.Add("someItem")
+	err := set.Add("someItem")
 
 	assert.Error(t, err)
 	assert.Equal(t, "cannot add item that already exists in the set", err.Error())
+}
+
+func TestRemoveReturnsFalseWhenItemDoesNotExists(t *testing.T) {
+	set := s.NewSet()
+
+	removed := set.Remove("someItem")
+
+	assert.False(t, removed)
+}
+
+func TestRemoveReturnsIfItemExists(t *testing.T) {
+	set := s.NewSet()
+
+	set.Add("someItem")
+	removed := set.Remove("someItem")
+
+	assert.True(t, removed)
+}
+
+func TestShouldReduceSizeOnRemovalOfItem(t *testing.T) {
+	set := s.NewSet()
+
+	set.Add("firstItem")
+	set.Add("secondItem")
+	set.Add("thirdItem")
+
+	assert.Equal(t, 3, set.Size())
+
+	set.Remove("secondItem")
+	assert.Equal(t, 2, set.Size())
+
+	set.Remove("thirdItem")
+	assert.Equal(t, 1, set.Size())
+
+	set.Remove("firstItem")
+	assert.Equal(t, 0, set.Size())
 }
