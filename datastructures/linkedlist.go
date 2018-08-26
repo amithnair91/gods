@@ -14,6 +14,7 @@ func NewSinglyLinkedList() singlyLinkedList {
 	return singlyLinkedList{}
 }
 
+//O(1) time complexity worst case
 func (l *singlyLinkedList) Add(item interface{}) bool {
 	if l.head == nil {
 		headElem := Element{value: item, next: nil}
@@ -41,7 +42,7 @@ func (l *singlyLinkedList) Remove(value interface{}) bool {
 }
 
 //recursion
-//O(n) time complexity
+//O(n) time complexity worst case
 func findAndRemoveElement(previousElement, elem *Element, value interface{}) bool {
 
 	if elem.value == value {
