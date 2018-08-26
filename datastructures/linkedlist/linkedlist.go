@@ -1,6 +1,6 @@
 package linkedlist
 
-type singlyLinkedList struct {
+type SinglyLinkedList struct {
 	head *Element
 	tail *Element
 }
@@ -10,12 +10,12 @@ type Element struct {
 	next  *Element
 }
 
-func NewSinglyLinkedList() singlyLinkedList {
-	return singlyLinkedList{}
+func NewSinglyLinkedList() SinglyLinkedList {
+	return SinglyLinkedList{}
 }
 
 //O(1) time complexity worst case
-func (l *singlyLinkedList) Add(item interface{}) bool {
+func (l *SinglyLinkedList) Add(item interface{}) bool {
 	if l.head == nil {
 		headElem := Element{value: item, next: nil}
 		l.head = &headElem
@@ -31,7 +31,7 @@ func (l *singlyLinkedList) Add(item interface{}) bool {
 	return true
 }
 
-func (l *singlyLinkedList) Remove(value interface{}) bool {
+func (l *SinglyLinkedList) Remove(value interface{}) bool {
 
 	removed := findAndRemoveElement(nil, l.head, value)
 	if removed {
@@ -56,18 +56,18 @@ func findAndRemoveElement(previousElement, elem *Element, value interface{}) boo
 	return false
 }
 
-func (l *singlyLinkedList) Head() Element {
+func (l *SinglyLinkedList) Head() Element {
 	return *l.head
 }
 
-func (l *singlyLinkedList) Tail() Element {
+func (l *SinglyLinkedList) Tail() Element {
 	if l.tail == nil {
 		return Element{}
 	}
 	return *l.tail
 }
 
-func (l *singlyLinkedList) Array() []interface{} {
+func (l *SinglyLinkedList) Array() []interface{} {
 
 	var items []interface{}
 	toArray(l.head, &items)

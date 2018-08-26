@@ -4,20 +4,26 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/amithnair91/gods/datastructures/linkedlist"
+	l "github.com/amithnair91/gods/datastructures/linkedlist"
 
 	"github.com/stretchr/testify/assert"
 )
 
+func TestShouldBeAbleToCreateNewLinkedList(t *testing.T) {
+	linkedList := l.NewSinglyLinkedList()
+
+	assert.IsType(t, l.SinglyLinkedList{}, linkedList)
+}
+
 func TestShouldBeAbleToAddItem(t *testing.T) {
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	added := linkedList.Add(1)
 
 	assert.True(t, added)
 }
 
 func TestShouldAssignHeadElementOnFirstAdd(t *testing.T) {
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	expectedHead := 1
 	linkedList.Add(expectedHead)
 	head := linkedList.Head()
@@ -28,7 +34,7 @@ func TestShouldReturnFirstAddedItemAsHead(t *testing.T) {
 
 	inputItems := []string{"mamooty", "mohanlal"}
 
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 
@@ -39,7 +45,7 @@ func TestShouldReturnFirstAddedItemAsHead(t *testing.T) {
 
 func TestShouldBeAbleToReturnNextItem(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 
@@ -51,16 +57,16 @@ func TestShouldBeAbleToReturnNextItem(t *testing.T) {
 
 func TestShouldReturnTailAsEmptyOnAddingSingleElement(t *testing.T) {
 	inputItems := []string{"mamooty"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	tail := linkedList.Tail()
-	expectedResult := linkedlist.Element{}
+	expectedResult := l.Element{}
 	assert.True(t, reflect.DeepEqual(expectedResult, tail))
 }
 
 func TestShouldReturnFalseOnRemoveElementIfItemDoesNotExist(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -72,7 +78,7 @@ func TestShouldReturnFalseOnRemoveElementIfItemDoesNotExist(t *testing.T) {
 
 func TestShouldReturnTrueIfElementExists(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -84,7 +90,7 @@ func TestShouldReturnTrueIfElementExists(t *testing.T) {
 
 func TestShouldBeAbleToAddMultipleItems(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -104,7 +110,7 @@ func TestShouldBeAbleToAddMultipleItems(t *testing.T) {
 
 func TestShouldBeAbleToListItems(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -122,7 +128,7 @@ func TestShouldBeAbleToListItems(t *testing.T) {
 
 func TestShouldBeAbleToAddItemsOfDifferentDataTypes(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -140,7 +146,7 @@ func TestShouldBeAbleToAddItemsOfDifferentDataTypes(t *testing.T) {
 
 func TestShouldBeAbleToMaintainInsertionOrderOnRemoval(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan", "nivin"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
@@ -160,7 +166,7 @@ func TestShouldBeAbleToMaintainInsertionOrderOnRemoval(t *testing.T) {
 
 func TestShouldBeAbleToMaintainInsertionOrderOnRemovalOfMultipleElements(t *testing.T) {
 	inputItems := []string{"mamooty", "mohanlal", "srinivasan"}
-	linkedList := linkedlist.NewSinglyLinkedList()
+	linkedList := l.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	linkedList.Add(inputItems[1])
 	linkedList.Add(inputItems[2])
