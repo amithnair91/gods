@@ -9,16 +9,15 @@ https://www.geeksforgeeks.org/data-structures/
 **List of implemented Data Structures**
 
 1. LinkedList
+2. Stack
 
 
 **TODO**
 
-
-1. Stack
-2. Queue
-3. Binary Tree
-4. Binary Search Tree
-5. Heap
-6. Graph
-7. Set
-8. HashSet
+1. Queue
+2. Binary Tree
+3. Binary Search Tree
+4. Heap
+5. Graph
+6. Set
+7. HashSet
