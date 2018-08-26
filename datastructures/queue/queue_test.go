@@ -13,3 +13,29 @@ func TestShouldBeAbleToCreateNewQueue(t *testing.T) {
 
 	assert.IsType(t, q.Queue{}, queue)
 }
+
+func TestSizeReturnsZeroIfQueueIsEmpty(t *testing.T) {
+	queue := q.NewQueue()
+
+	size := queue.Size()
+
+	assert.Equal(t, 0, size)
+}
+
+func TestFrontReturnsErrorWhenQueueIsEmpty(t *testing.T) {
+	queue := q.NewQueue()
+
+	_, err := queue.Front()
+
+	assert.Error(t, err)
+	assert.Equal(t, "queue is empty", err.Error())
+}
+
+func TestRearReturnsErrorWhenQueueIsEmpty(t *testing.T) {
+	queue := q.NewQueue()
+
+	_, err := queue.Rear()
+
+	assert.Error(t, err)
+	assert.Equal(t, "queue is empty", err.Error())
+}
