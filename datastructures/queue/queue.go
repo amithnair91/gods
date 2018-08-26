@@ -31,3 +31,16 @@ func (q *Queue) Rear() (interface{}, error) {
 
 	return nil, nil
 }
+
+func (q *Queue) Enqueue() {
+
+}
+
+func (q *Queue) Dequeue() (interface{}, error) {
+
+	if len(q.items) < 1 {
+		return nil, errors.New("queue is empty")
+	}
+
+	return nil, nil
+}

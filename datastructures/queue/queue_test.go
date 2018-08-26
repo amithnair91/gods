@@ -39,3 +39,18 @@ func TestRearReturnsErrorWhenQueueIsEmpty(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, "queue is empty", err.Error())
 }
+
+func TestEnqueueShouldNotPanic(t *testing.T) {
+	queue := q.NewQueue()
+
+	assert.NotPanics(t, func() { queue.Enqueue() })
+}
+
+func TestDequeueReturnsErrorWhenQueueIsEmpty(t *testing.T) {
+	queue := q.NewQueue()
+
+	_, err := queue.Dequeue()
+
+	assert.Error(t, err)
+	assert.Equal(t, "queue is empty", err.Error())
+}
