@@ -1,10 +1,12 @@
 package datastructures_test
 
 import (
-	"github.com/stretchr/testify/assert"
-	"gitlab.com/amithnair/gods/datastructures"
 	"reflect"
 	"testing"
+
+	"gitlab.com/amithnair/gods/datastructures"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestShouldBeAbleToAddItem(t *testing.T) {
