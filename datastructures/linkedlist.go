@@ -68,7 +68,7 @@ func (l *singlyLinkedList) Tail() Element {
 
 func (l *singlyLinkedList) String() []string {
 
-	items := []string{}
+	var items []string
 	toStringArray(l.head, &items)
 
 	return items

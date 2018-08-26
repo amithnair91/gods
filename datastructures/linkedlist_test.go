@@ -1,7 +1,6 @@
 package datastructures_test
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/assert"
 	"gitlab.com/amithnair/gods/datastructures"
 	"reflect"
@@ -49,7 +48,7 @@ func TestShouldBeAbleToReturnNextItem(t *testing.T) {
 }
 
 func TestShouldReturnTailAsEmptyOnAddingSingleElement(t *testing.T) {
-	inputItems := []string{"mamooty", "mohanlal"}
+	inputItems := []string{"mamooty"}
 	linkedList := datastructures.NewSinglyLinkedList()
 	linkedList.Add(inputItems[0])
 	tail := linkedList.Tail()
@@ -110,8 +109,6 @@ func TestShouldBeAbleToListItems(t *testing.T) {
 	linkedList.Add(inputItems[3])
 
 	items := linkedList.String()
-
-	println(fmt.Sprintf("%#v", items))
 
 	assert.Equal(t, inputItems[0], items[0])
 	assert.Equal(t, inputItems[1], items[1])
