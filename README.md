@@ -21,3 +21,4 @@ https://www.geeksforgeeks.org/data-structures/
 5. Graph
 6. Set
 7. HashSet
+8. Trie
