@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/amithnair91/gods.svg?branch=master)](https://travis-ci.org/amithnair91/gods)
+[![Go Report Card](https://goreportcard.com/badge/github.com/amithnair91/gods)](https://goreportcard.com/report/github.com/amithnair91/gods)
 
 ## Data structures in Golang
 
